@@ -1,5 +1,7 @@
 # ManimCE OpenGL on Google Colab · GPU
 
+> 📖 **New to this? Read the [Quick Start](QUICKSTART.md) — 4 cells, done.**
+
 > Render ManimCE animations with the **OpenGL renderer**, headlessly, inside
 > **Google Colab** — video embedded inline + a one-click download button.
 > **Open the notebook, set runtime to T4 GPU, Run all.**
