@@ -1,6 +1,6 @@
 # ManimCE OpenGL on Google Colab · GPU
 
-> 📖 **New to this? Read the [Quick Start](QUICKSTART.md) — 4 cells, done.**
+> 📖 **New to this? Read the [Quick Start](QUICKSTART.md) — 3 cells, done.**
 
 > Render ManimCE animations with the **OpenGL renderer**, headlessly, inside
 > **Google Colab** — video embedded inline + a one-click download button.
@@ -21,7 +21,8 @@ a `%%manim` magic that renders inline.
 ### A) One line (recommended)
 
 ```python
-!pip install -q git+https://github.com/myabdur2121-cpu/manim-opengl-colab
+!pip install -q manim moderngl numpy matplotlib
+!pip install -q --no-deps git+https://github.com/myabdur2121-cpu/manim-opengl-colab
 import manim_colab
 
 %%manim -ql --renderer=opengl --write_to_movie True MyScene
