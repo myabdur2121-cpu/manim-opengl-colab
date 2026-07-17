@@ -12,7 +12,6 @@ def enable_inline_embed() -> None:
 def _patch_opengl_mobjects() -> None:
     import manim.mobject.mobject
     import manim.mobject.opengl.opengl_mobject
-
     manim.mobject.mobject.Mobject.z_index = 0
     manim.mobject.opengl.opengl_mobject.OpenGLMobject.z_index = 0
     manim.mobject.mobject.Mobject.should_render = True
@@ -60,6 +59,7 @@ def apply_opengl_patches() -> None:
 
 
 def run_scene_inline(line, cell):
+    """Compile + render a scene with OpenGLRenderer; return an inline Video."""
     import manim
     from IPython.display import Video
 
@@ -72,7 +72,7 @@ def run_scene_inline(line, cell):
     manim.config.video_dir = "./media/videos/inline_scene/720p30"
     manim.config.media_dir = "./media"
     manim.config.write_to_movie = True
-    manim.config.renderer = 'opengl'
+    manim.config.renderer = 'opengl'   # LOCK renderer across the pipeline
 
     os.makedirs(
         f"./media/videos/inline_scene/720p30/partial_movie_files/{scene_name}",
@@ -97,16 +97,3 @@ def run_scene_inline(line, cell):
         return Video(alt_path, embed=True, width=640, height=360)
 
     print("Video rendering finished but file output path validation failed.")
-
-
-def register_manim_magic() -> None:
-    apply_opengl_patches()
-    try:
-        from IPython import get_ipython
-    except ImportError:
-        return
-    ip = get_ipython()
-    if ip is None:
-        return
-    ip.register_magic_function(run_scene_inline, magic_kind="cell", magic_name="manim")
-    print("--- 🛠️ ROBUST UNIFIED ENGINE FIX RUNNING 🛠️ ---")

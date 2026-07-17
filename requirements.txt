@@ -1,5 +1,0 @@
-IPython==8.21.0
-moderngl
-numpy
-matplotlib
-manim

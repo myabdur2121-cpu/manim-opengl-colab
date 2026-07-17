@@ -1,17 +1,17 @@
 # Quick Start
 
-## 1. Runtime সেট করুন
+## ১. Runtime সেট করুন
 Runtime → Change runtime type → T4 GPU → Save
 
-## 2. সেল 1 — ইনস্টল
+## ২. সেল ১ — ইনস্টল + সেটআপ (একসাথে)
 ```python
 !pip install -q git+https://github.com/myabdur2121-cpu/manim-opengl-colab
-import manim_colab
+import manim_colab; manim_colab.ready()
 ```
 
-## 3. সেল 2 — অ্যানিমেশন
+## ৩. সেল ২ — অ্যানিমেশন
 ```python
-%%manim -ql --renderer=opengl --write_to_movie True MyScene
+%%manim MyScene
 from manim import *
 
 class MyScene(Scene):
@@ -23,12 +23,10 @@ class MyScene(Scene):
         self.wait(1)
 ```
 
-প্রথমবার ৫-১০ মিনিট লাগবে (auto setup)। এরপর ভিডিও ইনলাইন দেখাবে।
-
-## 4. সেল 3 — ডাউনলোড
+## ৪. সেল ৩ — ডাউনলোড
 ```python
 from google.colab import files
 files.download("./media/videos/inline_scene/720p30/MyScene.mp4")
 ```
 
-ব্যস! আপনার GitHub নাম ব্যবহার করে সব কিছু সেটআপ হয়ে যাবে।
+`myabdur2121-cpu` আপনার GitHub নাম দিন।
